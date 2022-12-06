@@ -1,21 +1,23 @@
 # Google firewall Terraform module
-Terraform module for creation Google firewall
+Terraform module for creation of Google firewall
 
 ## Usage
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name                                                                      | Version   |
-| ------------------------------------------------------------------------- | --------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0  |
-| <a name="requirement_google"></a> [google](#requirement\_google)          | >= 4.24.0 |
+| Name                                                                      | Version  |
+| ------------------------------------------------------------------------- | -------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google)          | 4.24.0   |
+| <a name="requirement_random"></a> [random](#requirement\_random)          | >= 3.4.3 |
 
 ## Providers
 
-| Name                                                             | Version   |
-| ---------------------------------------------------------------- | --------- |
-| <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.24.0 |
+| Name                                                             | Version |
+| ---------------------------------------------------------------- | ------- |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 4.24.0  |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 3.4.3   |
 
 ## Modules
 
