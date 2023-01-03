@@ -18,18 +18,17 @@ variable "network" {
   type        = string
 }
 
-variable "sql_instance_ip" {
-  description = "The SQL database ip address to connect to"
+variable "allow_egress" {
+  description = "The CIDR range to which connections are allowed."
+  type        = set(string)
+}
+
+variable "egress_port" {
+  description = "The TCP port number to which the connection is allowed."
   type        = string
 }
 
-variable "sql_port" {
-  description = "The database port number to connect to"
-  type        = string
-  default     = "1433"
-}
-
-variable "dataproc_range" {
-  description = "CIDR range for Dataproc subnet"
-  type        = string
+variable "allow_ingress" {
+  description = "The CIDR range from which connections are allowed."
+  type        = set(string)
 }

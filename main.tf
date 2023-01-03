@@ -1,18 +1,20 @@
-resource "google_compute_firewall" "egress_sql_rule" {
+resource "google_compute_firewall" "egress_allow_rule" {
+  count    = length(var.allow_egress) == 0 ? 0 : 1
   project  = var.project_id
   name     = "${var.env}-${var.product_base_name}-sql-allow"
   network  = var.network
   priority = "100"
   allow {
     protocol = "tcp"
-    ports    = [var.sql_port]
+    ports    = [var.egress_port]
   }
-  destination_ranges = [var.sql_instance_ip]
+  destination_ranges = var.allow_egress
   direction          = "EGRESS"
-  description        = "Allow egress to sql instace"
+  description        = "Allow egress traffic"
 }
 
-resource "google_compute_firewall" "ingress_dataproc_rule" {
+resource "google_compute_firewall" "ingress_allow_rule" {
+  count    = length(var.allow_ingress) == 0 ? 0 : 1
   project  = var.project_id
   name     = "${var.env}-${var.product_base_name}-internal"
   network  = var.network
@@ -21,8 +23,8 @@ resource "google_compute_firewall" "ingress_dataproc_rule" {
     protocol = "all"
   }
   direction     = "INGRESS"
-  source_ranges = [var.dataproc_range]
-  description   = "Allow internal ingress traffic"
+  source_ranges = var.allow_ingress
+  description   = "Allow ingress traffic"
 }
 
 resource "google_compute_firewall" "ingress_deny_rule" {
